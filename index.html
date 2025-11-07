@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="ar">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>لعبة: نعم يا ماما — المراحل الثلاث 🎮</title>
+<style>
+  :root{
+    --bg:#071122; --card:#0b1220; --accent:#ffd24d; --muted:#9fb0c8;
+  }
+  *{box-sizing:border-box;font-family:system-ui,-apple-system,Segoe UI,Roboto,"Noto Sans Arabic",sans-serif}
+  body{margin:0;min-height:100vh;background:linear-gradient(180deg,#021028 0%, #05243b 100%);color:#eaf6ff;display:flex;align-items:center;justify-content:center;padding:18px}
+  .app{width:100%;max-width:720px;padding:18px;background:linear-gradient(180deg,var(--card),#071827);border-radius:14px;box-shadow:0 12px 40px rgba(2,8,20,.6);overflow:hidden}
+  header{text-align:center;padding:6px 8px 18px}
+  h1{margin:6px 0;font-size:20px}
+  .sub{color:var(--muted);font-size:13px;margin-bottom:8px}
+
+  /* stage card */
+  .stage{padding:16px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));min-height:220px;display:flex;flex-direction:column;gap:12px;align-items:center;justify-content:center;transition:all .35s ease}
+  .hidden{display:none}
+
+  input[type="text"]{padding:10px;border-radius:10px;border:none;outline:none;width:100%;max-width:380px;background:rgba(255,255,255,0.02);color:inherit;font-size:16px}
+  .btn{background:var(--accent);color:#071827;padding:10px 14px;border-radius:12px;border:none;font-weight:700;cursor:pointer;box-shadow:0 8px 28px rgba(255,210,77,.12)}
+  .btn.secondary{background:transparent;border:1px solid rgba(255,255,255,.06);color:var(--muted)}
+  .controls{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+
+  .log{width:100%;max-width:560px;min-height:120px;overflow:auto;padding:12px;border-radius:10px;background:rgba(0,0,0,0.18);text-align:right;direction:rtl;border:1px solid rgba(255,255,255,0.02)}
+  .line{margin:6px 0;padding:8px;border-radius:8px}
+  .line.user{background:linear-gradient(90deg,#0a3b62,#08639a);color:#e6f6ff;text-align:right}
+  .line.bot{background:linear-gradient(90deg,#122a35,#0b465e);color:#eaf6ff;text-align:right}
+
+  .center{display:flex;flex-direction:column;align-items:center;gap:12px}
+  .celebrate{margin-top:10px;padding:10px 12px;border-radius:12px;background:linear-gradient(90deg,#2b6b2b,#64d368);color:#04210a;font-weight:800;transform:scale(.98);opacity:0;transition:all .5s}
+  .celebrate.show{opacity:1;transform:scale(1.02)}
+
+  /* certificate */
+  .cert{margin-top:14px;padding:14px;border-radius:12px;background:linear-gradient(180deg,#fff8dc,#fff4d3);color:#174022;max-width:560px;text-align:center}
+  .cert h2{margin:4px 0 8px}
+  .small{font-size:13px;color:var(--muted)}
+
+  /* small screens adjustments */
+  @media (max-width:420px){
+    h1{font-size:18px}
+  }
+
+  /* fun animation for tiita */
+  .tiita {
+    width:110px;height:110px;border-radius:50%;background:radial-gradient(circle at 40% 30%, #fff, #ffe6d6 10%, #ffddc7 40%, #f6b07a 100%);box-shadow:0 12px 30px rgba(246,176,122,.15);display:flex;align-items:center;justify-content:center;font-weight:800;color:#8a3b12;font-size:20px;transform:translateY(40px);opacity:0;transition:all .8s cubic-bezier(.2,.9,.2,1)
+  }
+  .tiita.show{transform:translateY(0);opacity:1}
+</style>
+</head>
+<body>
+  <main class="app" role="application" aria-label="لعبة نعم يا ماما — ثلاث مراحل">
+    <header>
+      <h1>لعبة: نعم يا ماما — المراحل الثلاث 🎭</h1>
+      <div class="sub">دلوقتي هتجرب 3 مراحل: ماما، الباب، وبعدين تيته تدخل 👇</div>
+    </header>
+
+    <!-- Stage 1 -->
+    <section id="stage1" class="stage">
+      <div class="center">
+        <div style="font-weight:800">المرحلة 1 — ماما بتنادي</div>
+        <div class="small">لو ردّيت صح — هتكسب نجمة وتروح للمرحلة اللي بعدها</div>
+        <input id="input1" placeholder="اكتب: ياواد يادقدق" autocomplete="off" />
+        <div class="controls">
+          <button class="btn" id="btn1">رد على ماما</button>
+          <button class="btn secondary" id="
